@@ -32,6 +32,7 @@ namespace WindowsFormsApplication13
         {
 
             timer2.Enabled = true;
+            timer2.Start();
 
            
         }
@@ -47,6 +48,7 @@ namespace WindowsFormsApplication13
         private void button2_Click(object sender, EventArgs e)
         {
             timer2.Enabled = false;
+            timer2.Stop();
         }
     }
 }

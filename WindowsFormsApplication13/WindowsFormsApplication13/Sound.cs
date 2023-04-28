@@ -70,7 +70,7 @@ namespace WindowsFormsApplication13
             return inputDevice;
         }*/
 
-        public void StartDetect(int inputDevice)
+        public float StartDetect(int inputDevice)
         {
             WaveInEvent waveIn = new WaveInEvent();
 
@@ -89,24 +89,25 @@ namespace WindowsFormsApplication13
             byte[] buffer = new byte[8192];
             int bytesRead;
 
-            Console.WriteLine("Play or sing a note! Press ESC to exit at any time. \n");
+            //Console.WriteLine("Play or sing a note! Press ESC to exit at any time. \n");
 
-            do
-            {
+           // do
+           // {
                 bytesRead = stream.Read(buffer, 0, buffer.Length);
 
                 float freq = pitch.Get(buffer);
 
-                if (freq != 0)
-                {
-                    Console.WriteLine("Freq: " + freq + " | Note: " + GetNote(freq));
-                }
+             //   if (freq != 0)
+             //   {
+              //      Console.WriteLine("Freq: " + freq + " | Note: " + GetNote(freq));
+             //   }
 
-            } while (bytesRead != 0 && !(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape));
+           // } while (bytesRead != 0 && !(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape));
 
             // stop recording
             waveIn.StopRecording();
             waveIn.Dispose();
+            return freq;
         }
 
         void WaveIn_DataAvailable(object sender, WaveInEventArgs e)
