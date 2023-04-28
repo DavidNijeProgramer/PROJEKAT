@@ -27,5 +27,26 @@ namespace WindowsFormsApplication13
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            timer2.Enabled = true;
+
+           
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            Sound sound = new Sound();
+            float f = sound.StartDetect(int.Parse(label1.Text));
+            label3.Text = f.ToString();
+            trackBar1.Value = Convert.ToInt32(f);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            timer2.Enabled = false;
+        }
     }
 }
