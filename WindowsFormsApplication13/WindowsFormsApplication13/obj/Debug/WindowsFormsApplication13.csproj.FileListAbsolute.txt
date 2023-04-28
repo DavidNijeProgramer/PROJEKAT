@@ -9,3 +9,4 @@ c:\users\david\documents\visual studio 2015\Projects\WindowsFormsApplication13\W
 c:\users\david\documents\visual studio 2015\Projects\WindowsFormsApplication13\WindowsFormsApplication13\obj\Debug\WindowsFormsApplication13.pdb
 c:\users\david\documents\visual studio 2015\Projects\WindowsFormsApplication13\WindowsFormsApplication13\bin\Debug\NAudio.dll
 c:\users\david\documents\visual studio 2015\Projects\WindowsFormsApplication13\WindowsFormsApplication13\bin\Debug\NAudio.xml
+C:\Users\david\Documents\Visual Studio 2015\Projects\WindowsFormsApplication13\WindowsFormsApplication13\obj\Debug\WindowsFormsApplication13.Form2.resources

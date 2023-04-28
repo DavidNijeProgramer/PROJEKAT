@@ -16,6 +16,7 @@ namespace WindowsFormsApplication13
     
     public partial class Form1 : Form
     {
+        public static string input;
         public Form1()
         {
             InitializeComponent();
@@ -40,13 +41,20 @@ namespace WindowsFormsApplication13
 
         private void button1_Click(object sender, EventArgs e)
         {
-            textBox1.Text = comboBox1.SelectedText;
+          // input = comboBox1.SelectedText.Substring(0, 1);
+            this.Close();
+            Form2 form2 = new Form2();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Sound sound = new Sound();
             sound.StartDetect(int.Parse(textBox1.Text));
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
