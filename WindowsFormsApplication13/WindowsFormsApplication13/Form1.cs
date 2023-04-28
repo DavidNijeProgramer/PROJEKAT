@@ -24,7 +24,7 @@ namespace WindowsFormsApplication13
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string[] devices = new string[WaveInEvent.DeviceCount];
+           /* string[] devices = new string[WaveInEvent.DeviceCount];
 
             for (int i = 0; i < WaveInEvent.DeviceCount; i++)
             {
@@ -33,7 +33,7 @@ namespace WindowsFormsApplication13
 
             }
             comboBox1.Items.AddRange(devices);
-            
+            */
 
             
          
@@ -41,9 +41,11 @@ namespace WindowsFormsApplication13
 
         private void button1_Click(object sender, EventArgs e)
         {
-          // input = comboBox1.SelectedText.Substring(0, 1);
-            this.Close();
-            Form2 form2 = new Form2();
+            input = (comboBox1.Text).Substring(0,1);
+            this.Hide();
+            Form2 f2 = new Form2();
+            f2.Show();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
