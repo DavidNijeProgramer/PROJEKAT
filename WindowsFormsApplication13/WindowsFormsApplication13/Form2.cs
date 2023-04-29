@@ -22,12 +22,12 @@ namespace WindowsFormsApplication13
         private void Form2_Load(object sender, EventArgs e)
         {
             label1.Text = Form1.input;
-            AllocConsole();
+          
+         
 
         }
-        [DllImport("kernel32.dll", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool AllocConsole();
+       
+      
 
         private void label1_Click(object sender, EventArgs e)
         {

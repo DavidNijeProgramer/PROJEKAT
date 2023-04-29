@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace WindowsFormsApplication13
 {
@@ -128,7 +138,7 @@ namespace WindowsFormsApplication13
             byte[] buffer = new byte[8192];
             int bytesRead;
 
-            //Console.WriteLine("Play or sing a note! Press ESC to exit at any time. \n");
+            MessageBox.Show("Play or sing a note! Press ESC to exit at any time. \n");
 
             do
             {
@@ -138,10 +148,10 @@ namespace WindowsFormsApplication13
 
                 if (freq != 0)
                 {
-                    Console.WriteLine("Freq: " + freq + " | Note: " + GetNote(freq));
+                    MessageBox.Show("Freq: " + freq + " | Note: " + GetNote(freq)); 
                 }
 
-            } while (bytesRead != 0 && !(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape));
+            } while (bytesRead != 0);
 
             // stop recording
             waveIn.StopRecording();
