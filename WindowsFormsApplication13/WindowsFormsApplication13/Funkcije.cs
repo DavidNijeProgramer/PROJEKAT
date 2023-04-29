@@ -9,35 +9,47 @@ namespace WindowsFormsApplication13
     class Funkcije
     {
         public int[] Konverzija(string s)
-        {   
+        {
+           
             int[] b = new int[3];
-
-            
-            if (s.Length == 7)
+            if (s.Contains('.') == true)
             {
-                b[0] =Convert.ToInt32( s.Substring(0, 2));
-                b[1] = Convert.ToInt32(s.Substring(3, 2));
-                b[2] = Convert.ToInt32(s.Substring(5, 2));
+                s = s.Substring(0, s.IndexOf('.'));
             }
-            else if (s.Length == 8)
-            { if (s[0] == '3')
-                {  
-                    b[0] = Convert.ToInt32(s.Substring(4, 2));
-                    b[1] = Convert.ToInt32(s.Substring(0, 3));
-                    b[2] = Convert.ToInt32(s.Substring(6, 2));
-                }
-                else
-                {
-                    b[0] = Convert.ToInt32(s.Substring(4, 2));
-                    b[1] = Convert.ToInt32(s.Substring(0, 3));
-                    b[2] = Convert.ToInt32(s.Substring(6, 2));
-                }
+            int k = Convert.ToInt32(s);
+
+           if (k < 100)
+            {
+                b[0] = 0;
+                b[1] = (k % 100)/10 * 20;
+                b[2] = (k % 10) * 20;
+                 
             }
 
-            if (b[0] > 255) { b[0] = b[0] - 255; }
-            if (b[1] > 255) { b[1] = b[1] - 255; }
-            if (b[2] > 255) { b[2] = b[2] - 255; }
+           else  if (k < 201)
+            {
+                b[0] = (k /10) * 5;
+                b[1] = 0;
+                b[2] = (k % 10) * 20;
 
+            }
+            else if (k < 301)
+            {
+                b[0] = (k / 10) * 5;
+                b[1] = 0;
+                b[2] = (k % 10) * 20;
+
+            }
+            else if (k > 300)
+            {
+                b[0] = (k / 100)*65;
+                b[1] = ((k / 10)%10) *50;
+                b[2] = (k % 10) * 35;
+
+            }
+
+
+            //return b;
             return b;
         }
     }

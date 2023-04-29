@@ -63,7 +63,7 @@ namespace WindowsFormsApplication13
             
 
             int[] boja = new int[3];
-            boja = funkcije.Konverzija(textBox1.Text);
+            textBox1.Text = (funkcije.Konverzija(textBox1.Text)).ToString();
             button1.BackColor = Color.FromArgb(boja[0],boja[1],boja[2]);
         }
     }
