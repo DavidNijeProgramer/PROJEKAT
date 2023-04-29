@@ -28,49 +28,88 @@ namespace WindowsFormsApplication13
                 { "B", 30.87f },
             };
 
-       /* public int SelectInputDevice()
-        {
-            int inputDevice = 0;
-            bool isValidChoice = false;
-            string[] devices = new string[WaveInEvent.DeviceCount];
+        /* public int SelectInputDevice()
+         {
+             int inputDevice = 0;
+             bool isValidChoice = false;
+             string[] devices = new string[WaveInEvent.DeviceCount];
 
-            do
-            {
-                //Console.Clear();
-                //Console.WriteLine("Please select input or recording device: ");
+             do
+             {
+                 //Console.Clear();
+                 //Console.WriteLine("Please select input or recording device: ");
 
-               // for (int i = 0; i < WaveInEvent.DeviceCount; i++)
-                //{
-                 //   string s =(i + ". " + WaveInEvent.GetCapabilities(i).ProductName);
-                //    devices[i] = s; 
+                // for (int i = 0; i < WaveInEvent.DeviceCount; i++)
+                 //{
+                  //   string s =(i + ". " + WaveInEvent.GetCapabilities(i).ProductName);
+                 //    devices[i] = s; 
 
-               // }
+                // }
 
-                //Console.WriteLine();
+                 //Console.WriteLine();
 
-                try
-                {
-                    if (int.TryParse(Console.ReadLine(), out inputDevice))
-                    {
-                        isValidChoice = true;
-                        Console.WriteLine("You have chosen " + WaveInEvent.GetCapabilities(inputDevice).ProductName + ".\n");
-                    }
-                    else
-                    {
-                        isValidChoice = false;
-                    }
-                }
-                catch
-                {
-                    throw new ArgumentException("Device # chosen is out of range.");
-                }
+                 try
+                 {
+                     if (int.TryParse(Console.ReadLine(), out inputDevice))
+                     {
+                         isValidChoice = true;
+                         Console.WriteLine("You have chosen " + WaveInEvent.GetCapabilities(inputDevice).ProductName + ".\n");
+                     }
+                     else
+                     {
+                         isValidChoice = false;
+                     }
+                 }
+                 catch
+                 {
+                     throw new ArgumentException("Device # chosen is out of range.");
+                 }
 
-            } while (isValidChoice == false);
+             } while (isValidChoice == false);
 
-            return inputDevice;
-        }*/
+             return inputDevice;
+         }*/
 
-        public float StartDetect(int inputDevice)
+        /*  public float StartDetect(int inputDevice)
+          {
+              WaveInEvent waveIn = new WaveInEvent();
+
+              waveIn.DeviceNumber = inputDevice;
+              waveIn.WaveFormat = new WaveFormat(44100, 1);
+              waveIn.DataAvailable += WaveIn_DataAvailable;
+
+              bufferedWaveProvider = new BufferedWaveProvider(waveIn.WaveFormat);
+
+              // begin record
+              waveIn.StartRecording();
+
+              IWaveProvider stream = new Wave16ToFloatProvider(bufferedWaveProvider);
+              Pitch pitch = new Pitch(stream);
+
+              byte[] buffer = new byte[8192];
+              int bytesRead;
+
+              //Console.WriteLine("Play or sing a note! Press ESC to exit at any time. \n");
+
+             // do
+             // {
+                  bytesRead = stream.Read(buffer, 0, buffer.Length);
+
+                  float freq = pitch.Get(buffer);
+
+               //   if (freq != 0)
+               //   {
+                //      Console.WriteLine("Freq: " + freq + " | Note: " + GetNote(freq));
+               //   }
+
+             // } while (bytesRead != 0 && !(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape));
+
+              // stop recording
+              waveIn.StopRecording();
+              waveIn.Dispose();
+              return freq;
+          }*/
+        public void StartDetect(int inputDevice)
         {
             WaveInEvent waveIn = new WaveInEvent();
 
@@ -91,23 +130,22 @@ namespace WindowsFormsApplication13
 
             //Console.WriteLine("Play or sing a note! Press ESC to exit at any time. \n");
 
-           // do
-           // {
+            do
+            {
                 bytesRead = stream.Read(buffer, 0, buffer.Length);
 
                 float freq = pitch.Get(buffer);
 
-             //   if (freq != 0)
-             //   {
-              //      Console.WriteLine("Freq: " + freq + " | Note: " + GetNote(freq));
-             //   }
+                if (freq != 0)
+                {
+                    Console.WriteLine("Freq: " + freq + " | Note: " + GetNote(freq));
+                }
 
-           // } while (bytesRead != 0 && !(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape));
+            } while (bytesRead != 0 && !(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape));
 
             // stop recording
             waveIn.StopRecording();
             waveIn.Dispose();
-            return freq;
         }
 
         void WaveIn_DataAvailable(object sender, WaveInEventArgs e)
