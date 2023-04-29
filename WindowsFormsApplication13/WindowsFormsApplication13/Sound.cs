@@ -21,6 +21,7 @@ namespace WindowsFormsApplication13
 {
     public class Sound
     {
+        
         BufferedWaveProvider bufferedWaveProvider = null;
         Dictionary<string, float> noteBaseFreqs = new Dictionary<string, float>()
             {
@@ -119,6 +120,10 @@ namespace WindowsFormsApplication13
               waveIn.Dispose();
               return freq;
           }*/
+       public void FQFInder ()
+        {
+
+        }
         public void StartDetect(int inputDevice)
         {
             WaveInEvent waveIn = new WaveInEvent();
