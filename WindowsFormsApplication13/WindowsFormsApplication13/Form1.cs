@@ -13,7 +13,7 @@ using NAudio.Wave;
 
 namespace WindowsFormsApplication13
 {
-    
+    /*ovo je forma koja ucitava kojim ce se uredjajem snimati glas*/
     public partial class Form1 : Form
     {
         public static string input;
@@ -23,7 +23,7 @@ namespace WindowsFormsApplication13
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        {   //ako zelite da ovo prebacite u neku drugu formu prekopirajte ovaj deo (ceo)
             string[] devices = new string[WaveInEvent.DeviceCount];
 
             for (int i = 0; i < WaveInEvent.DeviceCount; i++)
@@ -40,8 +40,9 @@ namespace WindowsFormsApplication13
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {   //plus ovaj deo
             input = (comboBox1.Text).Substring(0,1);
+            //do ovde
             this.Hide();
             Form2 f2 = new Form2();
             f2.Show();
@@ -59,12 +60,12 @@ namespace WindowsFormsApplication13
         }
 
         private void button2_Click_1(object sender, EventArgs e)
-        { Funkcije funkcije = new Funkcije();
-            
+        {
+        }
 
-            int[] boja = new int[3];
-            textBox1.Text = (funkcije.Konverzija(textBox1.Text)).ToString();
-            button1.BackColor = Color.FromArgb(boja[0],boja[1],boja[2]);
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

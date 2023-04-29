@@ -27,10 +27,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 namespace WindowsFormsApplication13
-{
+{   
+    //deo koje ce biti markiran treba kopirati u celosti U SVAKOJ FORMI GDE SE KORISTI SNIMANJE ZVUKA!!!
     public partial class Form2 : Form
-    {
+    {   
+        //ODAVDE
         public static int i;
+        public static string uredjaj;
         public class Sound
         {
 
@@ -125,13 +128,15 @@ namespace WindowsFormsApplication13
                 return null;
             }
         }
+        // DO OVDE
 
 
 
         public Form2()
         {
             InitializeComponent();
-            label1.Text = Form1.input;
+            uredjaj = Form1.input; //ovo upacuje informaciju o izabranom uredjaju iz prethodne forme, on ide u funkciju koja zapocinje snimanje glasa
+            label1.Text = uredjaj;
         }
 
 
@@ -153,7 +158,7 @@ namespace WindowsFormsApplication13
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            //ovaj deo pokrece tajmer
             timer2.Enabled = true;
             timer2.Start();
             i = 0;
@@ -163,7 +168,7 @@ namespace WindowsFormsApplication13
         }
 
         private void timer2_Tick(object sender, EventArgs e)
-        {
+        {   //ovaj deo je sta se desi kad se tajmer izvrsi, ako zelite da promenite interval idite na formu u designu. Ovo i sluzi da se nakon 10 sekundi automatski ugasi snimanje.
             i = i + 1;
             if (i > 10) { button2_Click(sender,e); }
             else
@@ -171,18 +176,39 @@ namespace WindowsFormsApplication13
                 int[] boja = new int[3];
                 Funkcije funkcije = new Funkcije();
                 Sound sound = new Sound();
+                //ovaj ovde deo ispisuje informacije 
                 label3.Text = sound.StartDetect(int.Parse(label1.Text));
                 boja = funkcije.Konverzija(label3.Text);
                 pictureBox1.BackColor = Color.FromArgb(boja[0], boja[1], boja[2]);
-                // label3.Text = f.ToString();
+                textBox1.Text = "# " + boja[0] + "," + boja[1] + "," + boja[2];
 
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
+        {   //ovaj deo zavrsava tajmer
             timer2.Enabled = false;
             timer2.Stop();
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// David <3

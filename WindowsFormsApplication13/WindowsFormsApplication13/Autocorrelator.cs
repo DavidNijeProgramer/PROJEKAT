@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WindowsFormsApplication13
-{
+{   
+    /*ne dirati*/
     class Autocorrelator
     {
         float[] prevBuffer;

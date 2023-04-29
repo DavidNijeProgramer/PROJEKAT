@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication13
 {
+    /*ovo je klasa u kojoj se nalazi funkcija kojom se frekvencija pretvara u boju, nista ne treba dirati, on izbacuje niz od kojih je b[0] = R u RGBu, b[1] = G u RGBu i b[2] = B u RGBu.
+    Ne zaboravite samo da napravite objekat klase pre nego sto upotrebljavate funkciju*/
     class Funkcije
     {
         public int[] Konverzija(string s)
