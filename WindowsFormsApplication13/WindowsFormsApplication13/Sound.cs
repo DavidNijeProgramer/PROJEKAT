@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -119,7 +119,7 @@ namespace WindowsFormsApplication13
               waveIn.StopRecording();
               waveIn.Dispose();
               return freq;
-          }*/
+          }
        public void FQFInder ()
         {
 
@@ -195,3 +195,4 @@ namespace WindowsFormsApplication13
         }
     }
 }
+*/
