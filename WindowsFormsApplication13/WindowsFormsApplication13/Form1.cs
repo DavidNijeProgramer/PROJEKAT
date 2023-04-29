@@ -57,5 +57,14 @@ namespace WindowsFormsApplication13
         {
 
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        { Funkcije funkcije = new Funkcije();
+            
+
+            int[] boja = new int[3];
+            boja = funkcije.Konverzija(textBox1.Text);
+            button1.BackColor = Color.FromArgb(boja[0],boja[1],boja[2]);
+        }
     }
 }

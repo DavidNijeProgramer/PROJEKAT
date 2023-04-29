@@ -30,6 +30,7 @@ namespace WindowsFormsApplication13
 {
     public partial class Form2 : Form
     {
+        public static int i;
         public class Sound
         {
 
@@ -53,7 +54,7 @@ namespace WindowsFormsApplication13
             {
 
             }
-            public void StartDetect(int inputDevice)
+            public string StartDetect(int inputDevice)
             {
                 WaveInEvent waveIn = new WaveInEvent();
 
@@ -72,7 +73,7 @@ namespace WindowsFormsApplication13
                 byte[] buffer = new byte[8192];
                 int bytesRead;
 
-                MessageBox.Show("Play or sing a note! Press ESC to exit at any time. \n");
+
 
                 do
                 {
@@ -82,7 +83,7 @@ namespace WindowsFormsApplication13
 
                     if (freq != 0)
                     {
-                        MessageBox.Show("Freq: " + freq + " | Note: " + GetNote(freq));
+                        return freq.ToString();
                     }
 
                 } while (bytesRead != 0);
@@ -90,6 +91,7 @@ namespace WindowsFormsApplication13
                 // stop recording
                 waveIn.StopRecording();
                 waveIn.Dispose();
+                return null;
             }
 
             void WaveIn_DataAvailable(object sender, WaveInEventArgs e)
@@ -123,25 +125,26 @@ namespace WindowsFormsApplication13
                 return null;
             }
         }
-    
 
 
-    public Form2()
+
+        public Form2()
         {
             InitializeComponent();
             label1.Text = Form1.input;
         }
 
-        
+
         private void Form2_Load(object sender, EventArgs e)
         {
             label1.Text = Form1.input;
-          
-         
+           
+
+
 
         }
-       
-      
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -153,17 +156,27 @@ namespace WindowsFormsApplication13
 
             timer2.Enabled = true;
             timer2.Start();
-            Sound sound = new Sound();
-            sound.StartDetect(int.Parse(label1.Text));
+            i = 0;
+
 
 
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            
-           // label3.Text = f.ToString();
-            //trackBar1.Value = Convert.ToInt32(f);
+            i = i + 1;
+            if (i > 10) { button2_Click(sender,e); }
+            else
+            {
+                int[] boja = new int[3];
+                Funkcije funkcije = new Funkcije();
+                Sound sound = new Sound();
+                label3.Text = sound.StartDetect(int.Parse(label1.Text));
+                boja = funkcije.Konverzija(label3.Text);
+                pictureBox1.BackColor = Color.FromArgb(boja[0], boja[1], boja[2]);
+                // label3.Text = f.ToString();
+
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
